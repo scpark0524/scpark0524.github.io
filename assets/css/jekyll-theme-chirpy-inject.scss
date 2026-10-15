@@ -1,0 +1,64 @@
+---
+---
+
+/* ── Google Fonts: DM Sans + Noto Sans KR ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+
+/* ── Global Font Override ── */
+body,
+html {
+  font-family: 'DM Sans', 'Noto Sans KR', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+}
+
+/* ── Headings ── */
+h1, h2, h3, h4, h5, h6,
+.site-title,
+.site-subtitle,
+#sidebar .site-title {
+  font-family: 'DM Sans', 'Noto Sans KR', sans-serif !important;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+
+/* ── Sidebar ── */
+#sidebar {
+  font-family: 'DM Sans', 'Noto Sans KR', sans-serif !important;
+
+  .site-title {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .site-subtitle {
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    font-size: 0.85rem;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* ── Post / Page Content ── */
+.content,
+.post-content,
+.page-content,
+#main-wrapper {
+  font-family: 'DM Sans', 'Noto Sans KR', sans-serif !important;
+  line-height: 1.85;
+}
+
+p {
+  line-height: 1.85;
+  letter-spacing: -0.005em;
+}
+
+/* ── Code blocks keep monospace ── */
+code, pre, .highlight {
+  font-family: 'Fira Code', 'Menlo', monospace !important;
+}
