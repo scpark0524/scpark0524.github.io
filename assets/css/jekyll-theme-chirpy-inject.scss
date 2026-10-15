@@ -58,6 +58,11 @@ p {
   letter-spacing: -0.005em;
 }
 
+/* ── Hide HOME from sidebar ── */
+#sidebar .nav-item:first-child {
+  display: none !important;
+}
+
 /* ── Code blocks keep monospace ── */
 code, pre, .highlight {
   font-family: 'Fira Code', 'Menlo', monospace !important;
