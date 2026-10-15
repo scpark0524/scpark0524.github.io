@@ -1,7 +1,6 @@
 ---
 layout: page
 permalink: /
+redirect_to: /about-me/
 ---
-
-{% capture about_content %}{% include_relative _tabs/about.md %}{% endcapture %}
-{{ about_content | remove: "---" | markdownify }}
+<script>window.location.replace("/about-me/");</script>
