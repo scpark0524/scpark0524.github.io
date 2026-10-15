@@ -63,6 +63,11 @@ p {
   display: none !important;
 }
 
+/* ── Hide right sidebar (trending tags, etc.) ── */
+#panel-wrapper {
+  display: none !important;
+}
+
 /* ── Code blocks keep monospace ── */
 code, pre, .highlight {
   font-family: 'Fira Code', 'Menlo', monospace !important;
