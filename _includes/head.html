@@ -1,0 +1,49 @@
+<style>
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+
+html { scroll-behavior: smooth; }
+
+/* ── Global Font Override ── */
+body, html, #sidebar, #sidebar .site-title, #sidebar .site-subtitle,
+.content, .post-content, .page-content, #main-wrapper,
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DM Sans', 'Noto Sans KR', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Avatar position ── */
+#sidebar .avatar > img, img.avatar {
+  object-position: center 65% !important;
+}
+
+/* ── Hide: HOME sidebar, breadcrumb, page title, right panel ── */
+#sidebar .nav-item:first-child,
+#sidebar ul.nav li:first-child,
+a.nav-link[href="/"],
+#topbar-wrapper,
+.topbar-wrapper,
+nav[aria-label="breadcrumb"],
+.breadcrumb,
+#breadcrumb,
+#panel-wrapper,
+.col-xl-3,
+.col-lg-3,
+aside.col-xl-3,
+#main > .row > .col-xl-3,
+.page > h1:first-child,
+.post > h1:first-child,
+h1.dynamic-title,
+#page-heading {
+  display: none !important;
+}
+
+/* ── Expand content area ── */
+.col-12.col-lg-11.col-xl-9,
+.col-12.col-lg-11.col-xl-8,
+.col-12.col-lg-8,
+#main > .row > div:first-child {
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+}
+</style>
