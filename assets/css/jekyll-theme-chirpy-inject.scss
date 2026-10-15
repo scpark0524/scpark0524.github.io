@@ -59,7 +59,27 @@ p {
 }
 
 /* ── Hide HOME from sidebar ── */
-#sidebar .nav-item:first-child {
+#sidebar .nav-item:first-child,
+#sidebar ul.nav li:first-child,
+.nav-item[class*="home"],
+a.nav-link[href="/"] {
+  display: none !important;
+}
+
+/* ── Hide breadcrumb (Home > About Me) ── */
+#topbar-wrapper,
+.topbar-wrapper,
+nav[aria-label="breadcrumb"],
+.breadcrumb,
+#breadcrumb,
+div.row:first-child > div > nav {
+  display: none !important;
+}
+
+/* ── Hide page title "About Me" heading ── */
+.page > h1,
+#page-heading,
+.post > h1:first-child {
   display: none !important;
 }
 
