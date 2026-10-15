@@ -1,4 +1,7 @@
 ---
-layout: home
-# Index page
+layout: page
+permalink: /
 ---
+
+{% capture about_content %}{% include_relative _tabs/about.md %}{% endcapture %}
+{{ about_content | remove: "---" | markdownify }}
