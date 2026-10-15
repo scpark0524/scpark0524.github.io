@@ -125,7 +125,7 @@ order: 1
 }
 .timeline-item {
   position: relative;
-  margin-bottom: 1.8rem;
+  margin-bottom: 2.2rem;
   padding-left: .5rem;
 }
 .timeline-item::before {
@@ -151,7 +151,7 @@ order: 1
   margin-bottom: .2rem;
 }
 .timeline-item .role {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: #e6edf3;
 }
@@ -162,8 +162,41 @@ order: 1
 .timeline-item .desc {
   font-size: .85rem;
   color: var(--text-muted);
-  margin-top: .3rem;
-  line-height: 1.5;
+  margin-top: .4rem;
+  line-height: 1.6;
+}
+.timeline-item .achievements {
+  margin-top: .5rem;
+  padding: 0;
+  list-style: none;
+}
+.timeline-item .achievements li {
+  font-size: .83rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding-left: 1rem;
+  position: relative;
+  margin-bottom: .2rem;
+}
+.timeline-item .achievements li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+.timeline-item .achievements .metric {
+  color: var(--accent);
+  font-weight: 600;
+}
+.timeline-item .award {
+  display: inline-block;
+  margin-top: .4rem;
+  font-size: .78rem;
+  background: rgba(74, 158, 255, .1);
+  border: 1px solid rgba(74, 158, 255, .2);
+  color: var(--accent);
+  padding: .2rem .6rem;
+  border-radius: 4px;
 }
 
 /* ── Skill Tags ── */
@@ -264,33 +297,47 @@ order: 1
 <div class="timeline">
   <div class="timeline-item now reveal">
     <div class="period">2025.09 — Present</div>
-    <div class="role">전략 PM</div>
-    <div class="company">쿠팡이츠 · Business Excellence Team</div>
-    <div class="desc">전사 문제 해결 전담 조직에서 문제정의 → 데이터 분석 → 솔루션 수립</div>
+    <div class="role">전략 PM · Business Excellence Team</div>
+    <div class="company">쿠팡이츠 (Coupang Eats)</div>
+    <div class="desc">전사 문제 해결 전담 조직에서 문제정의 → 데이터 분석 → 솔루션 수립을 담당합니다.</div>
   </div>
   <div class="timeline-item now reveal">
     <div class="period">2025.09 — Present</div>
-    <div class="role">석사과정</div>
-    <div class="company">KAIST 경영대학원 · 정보경영프로그램(IMMS) 14기</div>
-    <div class="desc">AI-Driven Business, IT경영 전략</div>
+    <div class="role">석사과정 · 정보경영프로그램(IMMS) 14기</div>
+    <div class="company">KAIST 경영대학원</div>
+    <div class="desc">AI-Driven Business, IT경영 전략을 공부하고 있습니다.</div>
   </div>
   <div class="timeline-item reveal">
     <div class="period">2021.03 — 2025.04</div>
-    <div class="role">PM</div>
-    <div class="company">NHN PAYCO · 서비스기획팀</div>
-    <div class="desc">캠퍼스 사업 수익 구조 개선, 제휴 프로모션, 결제 서비스 채널링</div>
+    <div class="role">PM · 서비스기획팀</div>
+    <div class="company">NHN PAYCO</div>
+    <div class="desc">대학생 결제 플랫폼 'PAYCO 캠퍼스' 사업 전반을 기획하고 성장시켰습니다.</div>
+    <ul class="achievements">
+      <li>캠퍼스 DA 광고 상품 런칭 — 사업 손익 <span class="metric">YoY 56% 개선</span>, 신규 BM으로 전체 매출의 24% 확보</li>
+      <li>리워드 구조 개편 — 마케팅 비용 <span class="metric">55% 절감</span>, 캠퍼스홈 MAU <span class="metric">20% 증가</span></li>
+      <li>케이뱅크 제휴 프로모션 — 양사 역대 최다 실적, 광고 매출 전년 대비 <span class="metric">9배 달성</span></li>
+      <li>대학 생협 '잇츠미' 앱 채널링 — 1초 결제 연동으로 생협 가맹점 거래 볼륨 <span class="metric">57% 상승</span></li>
+      <li>재학생 전용 식권 예약 서비스 런칭 — 10+개 대학 운영 중, 매월 <span class="metric">MPU 9%</span> 수준의 PU 유입</li>
+      <li>PAYCO 전용 결제 단말기 개선 — 스캔 CS 인입 <span class="metric">95% 감소</span>, 가맹점 결제건수 <span class="metric">1.25배 증가</span></li>
+    </ul>
+    <span class="award">2023 3Q PAYCO 플레이어</span>
   </div>
   <div class="timeline-item reveal">
     <div class="period">2019.07 — 2021.02</div>
-    <div class="role">SCM</div>
-    <div class="company">SK케미칼</div>
-    <div class="desc">공급망 관리 및 운영 최적화</div>
+    <div class="role">SCM · 공급망관리팀</div>
+    <div class="company">SK케미칼 (SK plasma)</div>
+    <div class="desc">혈액제제 원료의 공급망 관리와 물류 최적화를 담당했습니다.</div>
+    <ul class="achievements">
+      <li>내륙운송 차량 추가 확보 — 연간 내륙운송비 <span class="metric">20% 절감</span> 및 Contingency Plan 구축</li>
+      <li>원료혈장 파손율 개선 — 포장방식 전수 조사 기반 파손율 <span class="metric">1% 절감</span>, 연간 약 <span class="metric">2억원 원가절감</span></li>
+    </ul>
+    <span class="award">2020 SK PLASMA 대표이사 즉상</span>
   </div>
   <div class="timeline-item reveal">
     <div class="period">— 2019</div>
     <div class="role">국제학과 졸업</div>
     <div class="company">경희대학교</div>
-    <div class="desc">Global Business 심화</div>
+    <div class="desc">Global Business를 심화로 공부했습니다.</div>
   </div>
 </div>
 
