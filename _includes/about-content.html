@@ -17,13 +17,15 @@
 
 /* ── Reveal Animation ── */
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+  animation: revealUp .8s cubic-bezier(.16,1,.3,1) both;
 }
-.reveal.in {
-  opacity: 1;
-  transform: translateY(0);
+.reveal:nth-child(2) { animation-delay: .1s; }
+.reveal:nth-child(3) { animation-delay: .2s; }
+.reveal:nth-child(4) { animation-delay: .3s; }
+.reveal:nth-child(5) { animation-delay: .4s; }
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Section Layout ── */
@@ -419,7 +421,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal { animation: none; opacity: 1; transform: none; }
   .wid-card:hover, .interest-pill:hover { transform: none; }
 }
 </style>
@@ -607,25 +609,16 @@
 </div>
 
 <script>
-// Scroll reveal
-document.addEventListener('DOMContentLoaded', () => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-});
-
-// Career toggle
 function togglePast(btn) {
-  const past = document.getElementById('career-past');
-  btn.classList.toggle('open');
-  past.classList.toggle('open');
-  const label = btn.classList.contains('open') ? '접기' : '이전 경력 보기';
-  btn.innerHTML = label + ' <span class="arrow">▼</span>';
+  var past = document.getElementById('career-past');
+  if (past.classList.contains('open')) {
+    past.classList.remove('open');
+    btn.classList.remove('open');
+    btn.innerHTML = '이전 경력 보기 <span class="arrow">▼</span>';
+  } else {
+    past.classList.add('open');
+    btn.classList.add('open');
+    btn.innerHTML = '접기 <span class="arrow">▼</span>';
+  }
 }
 </script>
