@@ -396,32 +396,44 @@
 /* ══════════════════════════════════
    06. INTERESTS
    ══════════════════════════════════ */
-.interest-row {
-  display: flex;
-  gap: .6rem;
+.interest-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .8rem;
 }
-.interest-pill {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
+.interest-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 40px;
-  padding: .6rem 1.2rem;
+  border-radius: 14px;
+  padding: 1.3rem;
   transition: all .3s ease;
   cursor: default;
 }
-.interest-pill:hover {
-  border-color: var(--accent-border);
-  transform: translateY(-2px);
+.interest-card:hover {
+  border-color: rgba(74, 158, 255, .15);
+  background: var(--card-hover-bg);
 }
-.interest-pill .emoji {
-  font-size: 1.2rem;
+.interest-card .interest-header {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .5rem;
 }
-.interest-pill span:last-child {
-  font-size: .82rem;
+.interest-card .emoji {
+  font-size: 1.3rem;
+}
+.interest-card h4 {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -.02em;
+}
+.interest-card p {
+  font-size: .8rem;
   color: var(--text-muted);
-  font-weight: 500;
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* ══════════════════════════════════
@@ -585,18 +597,30 @@
 <!-- ═══════════ INTERESTS ═══════════ -->
 <div class="about-section reveal">
   <div class="section-heading" id="interests">Interests</div>
-  <div class="interest-row">
-    <div class="interest-pill">
-      <span class="emoji">🏀</span>
-      <span>농구</span>
+  <div class="interest-grid">
+    <div class="interest-card">
+      <div class="interest-header"><span class="emoji">🏊</span><h4>수영</h4></div>
+      <p>수영장이 있는 초등학교를 다닌 덕에, 10살 때부터 수영을 배웠습니다. 어릴 때 배운 수영 덕분에 지금도 간간이 자유수영을 즐기고 있습니다.</p>
     </div>
-    <div class="interest-pill">
-      <span class="emoji">⚾</span>
-      <span>삼성라이온즈</span>
+    <div class="interest-card">
+      <div class="interest-header"><span class="emoji">🏀</span><h4>농구</h4></div>
+      <p>중학교 때부터 농구가 제일 좋았습니다. 포지션은 포인트가드, 최애 선수는 드웨인 웨이드입니다.</p>
     </div>
-    <div class="interest-pill">
-      <span class="emoji">🍽️</span>
-      <span>미식</span>
+    <div class="interest-card">
+      <div class="interest-header"><span class="emoji">⚾</span><h4>야구</h4></div>
+      <p>야구는 보는 것만 하지만, 심취해서 봅니다. 태어날 때부터 삼성라이온즈 팬이고, 평생 좋아할 것 같습니다.</p>
+    </div>
+    <div class="interest-card">
+      <div class="interest-header"><span class="emoji">🏎️</span><h4>F1</h4></div>
+      <p>F1 더 무비 이후로 입문했습니다. 그랑프리는 꼭 챙겨보고 있고, 나중에 여유가 생기면 카레이싱을 취미로 삼고 싶습니다.</p>
+    </div>
+    <div class="interest-card">
+      <div class="interest-header"><span class="emoji">🍽️</span><h4>미식</h4></div>
+      <p>맛있는 걸 좋아하지만, 단순히 먹는 것보다 남들이 모르는 기가 막힌 맛집을 발굴하는 그 순간을 가장 좋아합니다.</p>
+    </div>
+    <div class="interest-card">
+      <div class="interest-header"><span class="emoji">📈</span><h4>투자</h4></div>
+      <p>관심은 많지만 제일 못하는 분야 중 하나입니다. 요즘은 코인 자동매매 프로그램을 고도화하는 데 시간을 쏟고 있습니다.</p>
     </div>
   </div>
 </div>
