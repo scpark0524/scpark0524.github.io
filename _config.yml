@@ -16,7 +16,7 @@ timezone: Asia/Seoul
 
 title: Charles Park
 
-tagline: 문제를 정의하고, 해결하는 일을 하고 있습니다.
+tagline: Problem Solver · Vibe Coder · KAIST IMMS
 
 description: >- # used by seo meta and the atom feed
   박승찬 | KAIST IMMS | Coupang Eats PM | Problem Solver & Vibe Coder
@@ -93,7 +93,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: /assets/img/avatar.jpg
+avatar: /assets/img/avatar.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
