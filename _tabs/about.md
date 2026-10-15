@@ -3,386 +3,636 @@ title: About Me
 icon: fas fa-user
 order: 1
 permalink: /about-me/
+toc: false
 ---
 
 <style>
 /* ── Color Tokens ── */
 :root {
   --accent: #4a9eff;
+  --accent-soft: rgba(74, 158, 255, .08);
   --accent-glow: rgba(74, 158, 255, .18);
-  --card-bg: rgba(255,255,255,.05);
-  --card-border: rgba(255,255,255,.08);
+  --accent-border: rgba(74, 158, 255, .25);
+  --card-bg: rgba(255,255,255,.03);
+  --card-border: rgba(255,255,255,.06);
+  --card-hover-bg: rgba(255,255,255,.06);
+  --text-primary: #e6edf3;
   --text-muted: #8b949e;
+  --text-faint: #6e7681;
+  --divider: rgba(255,255,255,.06);
 }
 
 /* ── Reveal Animation ── */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .7s ease, transform .7s ease;
+  transform: translateY(28px);
+  transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
 }
 .reveal.in {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ── Hero Section ── */
-.hero-section {
-  text-align: center;
-  padding: 2rem 0 3rem;
+/* ── Section Layout ── */
+.about-section {
+  margin-bottom: 4rem;
 }
-.hero-section h1 {
-  font-size: 2.4rem;
+.section-label {
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .6rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 2px;
+  background: var(--accent);
+}
+.section-heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: -.03em;
+  line-height: 1.3;
+}
+.section-divider {
+  height: 1px;
+  background: var(--divider);
+  margin: 3.5rem 0;
+}
+
+/* ══════════════════════════════════
+   01. HERO
+   ══════════════════════════════════ */
+.hero {
+  padding: 3rem 0 2rem;
+  text-align: center;
+}
+.hero-name {
+  font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 800;
-  margin-bottom: .5rem;
-  background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+  letter-spacing: -.05em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.hero-section .tagline {
-  font-size: 1.15rem;
+.hero-tagline {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
   color: var(--text-muted);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 1.5rem;
 }
-.hero-section .highlight {
+.hero-tagline .hl {
   color: var(--accent);
   font-weight: 600;
   -webkit-text-fill-color: var(--accent);
 }
-.typing-cursor::after {
-  content: '|';
-  animation: blink 1s step-end infinite;
-  color: var(--accent);
-  -webkit-text-fill-color: var(--accent);
+.hero-chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .5rem;
 }
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
-/* ── Section Title ── */
-.section-title {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin: 3rem 0 1.5rem;
-  padding-bottom: .5rem;
-  border-bottom: 2px solid var(--accent);
-  display: inline-block;
-}
-
-/* ── Cards Grid ── */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-  margin: 1rem 0;
-}
-.card {
+.hero-chip {
+  font-size: .75rem;
+  font-weight: 500;
+  color: var(--text-muted);
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-  cursor: default;
+  padding: .3rem .8rem;
+  border-radius: 20px;
 }
-.card:hover {
+
+/* ══════════════════════════════════
+   02. WHAT I DO
+   ══════════════════════════════════ */
+.wid-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .8rem;
+}
+.wid-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.6rem 1.3rem;
+  transition: all .35s cubic-bezier(.16,1,.3,1);
+  position: relative;
+  overflow: hidden;
+}
+.wid-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.wid-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px -8px rgba(74, 158, 255, .15);
-  border-color: var(--accent);
+  background: var(--card-hover-bg);
+  border-color: rgba(74, 158, 255, .15);
+  box-shadow: 0 16px 40px -12px rgba(74, 158, 255, .1);
 }
-.card .card-icon {
-  font-size: 1.8rem;
+.wid-card:hover::before {
+  opacity: 1;
+}
+.wid-icon {
+  font-size: 1.6rem;
   margin-bottom: .8rem;
   display: block;
 }
-.card h4 {
-  font-size: 1rem;
+.wid-card h4 {
+  font-size: .95rem;
   font-weight: 700;
-  margin-bottom: .4rem;
-  color: #e6edf3;
+  color: var(--text-primary);
+  margin-bottom: .5rem;
+  letter-spacing: -.02em;
 }
-.card p {
-  font-size: .88rem;
+.wid-card p {
+  font-size: .82rem;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 0;
 }
 
-/* ── Timeline ── */
-.timeline {
-  position: relative;
-  padding-left: 2rem;
-  margin: 1.5rem 0;
+/* ══════════════════════════════════
+   03. CAREER
+   ══════════════════════════════════ */
+.career-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 6px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--card-border);
+.career-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--divider);
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1.5rem;
+  align-items: start;
 }
-.timeline-item {
-  position: relative;
-  margin-bottom: 2.2rem;
-  padding-left: .5rem;
+.career-item:first-child {
+  padding-top: 0;
 }
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -1.85rem;
-  top: 6px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--text-muted);
-  border: 2px solid #1a1a2e;
-  transition: all .3s ease;
-}
-.timeline-item.now::before {
-  background: var(--accent);
-  box-shadow: 0 0 0 5px var(--accent-glow);
-}
-.timeline-item .period {
-  font-size: .8rem;
-  color: var(--accent);
+.career-period {
+  font-size: .78rem;
   font-weight: 600;
-  margin-bottom: .2rem;
+  color: var(--accent);
+  padding-top: 2px;
 }
-.timeline-item .role {
-  font-size: 1.05rem;
+.career-body h4 {
+  font-size: 1rem;
   font-weight: 700;
-  color: #e6edf3;
+  color: var(--text-primary);
+  margin-bottom: .15rem;
+  letter-spacing: -.02em;
 }
-.timeline-item .company {
-  font-size: .9rem;
+.career-company {
+  font-size: .88rem;
   color: var(--text-muted);
+  margin-bottom: .4rem;
 }
-.timeline-item .desc {
-  font-size: .85rem;
-  color: var(--text-muted);
-  margin-top: .4rem;
-  line-height: 1.6;
-}
-.timeline-item .achievements {
-  margin-top: .5rem;
-  padding: 0;
-  list-style: none;
-}
-.timeline-item .achievements li {
+.career-desc {
   font-size: .83rem;
   color: var(--text-muted);
   line-height: 1.6;
+  margin-bottom: .4rem;
+}
+.career-achievements {
+  list-style: none;
+  padding: 0;
+  margin: .5rem 0 0;
+}
+.career-achievements li {
+  font-size: .8rem;
+  color: var(--text-muted);
+  line-height: 1.65;
   padding-left: 1rem;
   position: relative;
-  margin-bottom: .2rem;
+  margin-bottom: .15rem;
 }
-.timeline-item .achievements li::before {
+.career-achievements li::before {
   content: '▸';
   position: absolute;
   left: 0;
   color: var(--accent);
+  font-size: .75rem;
 }
-.timeline-item .achievements .metric {
+.career-achievements .m {
   color: var(--accent);
   font-weight: 600;
 }
-.timeline-item .award {
+.career-badge {
   display: inline-block;
-  margin-top: .4rem;
-  font-size: .78rem;
-  background: rgba(74, 158, 255, .1);
-  border: 1px solid rgba(74, 158, 255, .2);
+  margin-top: .5rem;
+  font-size: .72rem;
+  font-weight: 600;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
   color: var(--accent);
-  padding: .2rem .6rem;
+  padding: .2rem .65rem;
   border-radius: 4px;
+  letter-spacing: .02em;
+}
+.career-now-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-right: .4rem;
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  vertical-align: middle;
 }
 
-/* ── Skill Tags ── */
+/* Expandable past career */
+.career-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  margin-top: 1rem;
+  padding: .6rem 1.2rem;
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .3s ease;
+  width: 100%;
+}
+.career-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent-border);
+  background: var(--accent-soft);
+}
+.career-toggle .arrow {
+  transition: transform .3s ease;
+  font-size: .7rem;
+}
+.career-toggle.open .arrow {
+  transform: rotate(180deg);
+}
+.career-past {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .5s cubic-bezier(.16,1,.3,1);
+}
+.career-past.open {
+  max-height: 800px;
+}
+
+/* ══════════════════════════════════
+   04. EDUCATION
+   ══════════════════════════════════ */
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .8rem;
+}
+.edu-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.4rem 1.3rem;
+  transition: all .3s ease;
+}
+.edu-card:hover {
+  border-color: rgba(74, 158, 255, .15);
+  background: var(--card-hover-bg);
+}
+.edu-period {
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: .4rem;
+}
+.edu-card h4 {
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: .2rem;
+  letter-spacing: -.02em;
+}
+.edu-card p {
+  font-size: .82rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ══════════════════════════════════
+   05. SKILLS
+   ══════════════════════════════════ */
+.skill-group {
+  margin-bottom: 1rem;
+}
+.skill-group-label {
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--text-faint);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+}
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: .5rem;
-  margin: 1rem 0;
+  gap: .4rem;
 }
 .skill-tag {
-  background: rgba(74, 158, 255, .1);
-  border: 1px solid rgba(74, 158, 255, .25);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
   color: var(--accent);
-  padding: .35rem .85rem;
+  padding: .3rem .75rem;
   border-radius: 20px;
-  font-size: .82rem;
+  font-size: .78rem;
   font-weight: 500;
   transition: all .3s ease;
+  cursor: default;
 }
 .skill-tag:hover {
-  background: rgba(74, 158, 255, .2);
-  transform: scale(1.05);
+  background: rgba(74, 158, 255, .15);
+  transform: translateY(-1px);
 }
-
-/* ── Interest Cards ── */
-.interest-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin: 1rem 0;
-}
-.interest-card {
+.skill-tag.secondary {
   background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 1.2rem;
-  text-align: center;
-  transition: transform .3s ease, border-color .3s ease;
-}
-.interest-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--accent);
-}
-.interest-card .emoji {
-  font-size: 2rem;
-  margin-bottom: .5rem;
-  display: block;
-}
-.interest-card span:last-child {
-  font-size: .85rem;
+  border-color: var(--card-border);
   color: var(--text-muted);
 }
-
-/* ── Responsive ── */
-@media (max-width: 768px) {
-  .hero-section h1 { font-size: 1.8rem; }
-  .cards-grid { grid-template-columns: 1fr; }
-  .interest-grid { grid-template-columns: repeat(3, 1fr); }
+.skill-tag.secondary:hover {
+  border-color: var(--accent-border);
+  color: var(--accent);
 }
 
-/* ── Reduce motion ── */
+/* ══════════════════════════════════
+   06. INTERESTS
+   ══════════════════════════════════ */
+.interest-row {
+  display: flex;
+  gap: .6rem;
+}
+.interest-pill {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 40px;
+  padding: .6rem 1.2rem;
+  transition: all .3s ease;
+  cursor: default;
+}
+.interest-pill:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-2px);
+}
+.interest-pill .emoji {
+  font-size: 1.2rem;
+}
+.interest-pill span:last-child {
+  font-size: .82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════ */
+@media (max-width: 768px) {
+  .wid-grid { grid-template-columns: 1fr; }
+  .edu-grid { grid-template-columns: 1fr; }
+  .career-item {
+    grid-template-columns: 1fr;
+    gap: .3rem;
+  }
+  .interest-row { flex-wrap: wrap; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .card:hover { transform: none; }
+  .wid-card:hover, .interest-pill:hover { transform: none; }
 }
 </style>
 
-<div class="hero-section reveal">
-  <h1>안녕하세요, 박승찬입니다<span class="typing-cursor"></span></h1>
-  <p class="tagline">
-    <span class="highlight">문제를 정의</span>하고, <span class="highlight">데이터로 분석</span>하고,<br>
-    <span class="highlight">서비스까지 만드는</span> 일을 하고 있습니다.
+<!-- ═══════════ 01. HERO ═══════════ -->
+<div class="hero reveal">
+  <h1 class="hero-name">박승찬</h1>
+  <p class="hero-tagline">
+    <span class="hl">문제를 정의</span>하고, <span class="hl">데이터로 분석</span>하고,<br>
+    <span class="hl">서비스까지 만드는</span> 사람.
   </p>
-</div>
-
-<div class="section-title reveal">What I Do</div>
-
-<div class="cards-grid">
-  <div class="card reveal">
-    <span class="card-icon">🎯</span>
-    <h4>Problem Solving</h4>
-    <p>전사에서 발생하는 문제를 찾아내어 정의하고, 구조화하여 해결합니다.</p>
-  </div>
-  <div class="card reveal">
-    <span class="card-icon">📊</span>
-    <h4>Data Analysis</h4>
-    <p>SQL과 데이터 분석을 통해 근거 기반의 의사결정을 이끌어냅니다.</p>
-  </div>
-  <div class="card reveal">
-    <span class="card-icon">🛠️</span>
-    <h4>Vibe Coding</h4>
-    <p>AI와 함께 작지만 진짜 돌아가는 서비스를 직접 만듭니다.</p>
+  <div class="hero-chips">
+    <span class="hero-chip">Coupang Eats · 전략 PM</span>
+    <span class="hero-chip">KAIST IMMS 14기</span>
+    <span class="hero-chip">Vibe Coder</span>
   </div>
 </div>
 
-<div class="section-title reveal">Career</div>
+<div class="section-divider"></div>
 
-<div class="timeline">
-  <div class="timeline-item now reveal">
-    <div class="period">2025.09 — Present</div>
-    <div class="role">전략 PM · Business Excellence Team</div>
-    <div class="company">쿠팡이츠 (Coupang Eats)</div>
-    <div class="desc">전사 문제 해결 전담 조직에서 문제정의 → 데이터 분석 → 솔루션 수립을 담당합니다.</div>
-  </div>
-  <div class="timeline-item now reveal">
-    <div class="period">2025.09 — Present</div>
-    <div class="role">석사과정 · 정보경영프로그램(IMMS) 14기</div>
-    <div class="company">KAIST 경영대학원</div>
-    <div class="desc">AI-Driven Business, IT경영 전략을 공부하고 있습니다.</div>
-  </div>
-  <div class="timeline-item reveal">
-    <div class="period">2021.03 — 2025.04</div>
-    <div class="role">PM · 서비스기획팀</div>
-    <div class="company">NHN PAYCO</div>
-    <div class="desc">대학생 결제 플랫폼 'PAYCO 캠퍼스' 사업 전반을 기획하고 성장시켰습니다.</div>
-    <ul class="achievements">
-      <li>캠퍼스 DA 광고 상품 런칭 — 사업 손익 <span class="metric">YoY 56% 개선</span>, 신규 BM으로 전체 매출의 24% 확보</li>
-      <li>리워드 구조 개편 — 마케팅 비용 <span class="metric">55% 절감</span>, 캠퍼스홈 MAU <span class="metric">20% 증가</span></li>
-      <li>케이뱅크 제휴 프로모션 — 양사 역대 최다 실적, 광고 매출 전년 대비 <span class="metric">9배 달성</span></li>
-      <li>대학 생협 '잇츠미' 앱 채널링 — 1초 결제 연동으로 생협 가맹점 거래 볼륨 <span class="metric">57% 상승</span></li>
-      <li>재학생 전용 식권 예약 서비스 런칭 — 10+개 대학 운영 중, 매월 <span class="metric">MPU 9%</span> 수준의 PU 유입</li>
-      <li>PAYCO 전용 결제 단말기 개선 — 스캔 CS 인입 <span class="metric">95% 감소</span>, 가맹점 결제건수 <span class="metric">1.25배 증가</span></li>
-    </ul>
-    <span class="award">2023 3Q PAYCO 플레이어</span>
-  </div>
-  <div class="timeline-item reveal">
-    <div class="period">2019.07 — 2021.02</div>
-    <div class="role">SCM · 공급망관리팀</div>
-    <div class="company">SK케미칼 (SK plasma)</div>
-    <div class="desc">혈액제제 원료의 공급망 관리와 물류 최적화를 담당했습니다.</div>
-    <ul class="achievements">
-      <li>내륙운송 차량 추가 확보 — 연간 내륙운송비 <span class="metric">20% 절감</span> 및 Contingency Plan 구축</li>
-      <li>원료혈장 파손율 개선 — 포장방식 전수 조사 기반 파손율 <span class="metric">1% 절감</span>, 연간 약 <span class="metric">2억원 원가절감</span></li>
-    </ul>
-    <span class="award">2020 SK PLASMA 대표이사 즉상</span>
-  </div>
-  <div class="timeline-item reveal">
-    <div class="period">— 2019</div>
-    <div class="role">국제학과 졸업</div>
-    <div class="company">경희대학교</div>
-    <div class="desc">Global Business를 심화로 공부했습니다.</div>
+<!-- ═══════════ 02. WHAT I DO ═══════════ -->
+<div class="about-section reveal">
+  <div class="section-label">01</div>
+  <div class="section-heading">What I Do</div>
+  <div class="wid-grid">
+    <div class="wid-card">
+      <span class="wid-icon">🎯</span>
+      <h4>문제 해결</h4>
+      <p>본질에 집중해 문제를 정의하고, 구조화하여 실행 가능한 솔루션으로 만듭니다.</p>
+    </div>
+    <div class="wid-card">
+      <span class="wid-icon">📊</span>
+      <h4>데이터 분석</h4>
+      <p>SQL과 데이터 분석으로 가설을 검증하고, 숫자 기반의 의사결정을 이끌어냅니다.</p>
+    </div>
+    <div class="wid-card">
+      <span class="wid-icon">⚡</span>
+      <h4>빌드</h4>
+      <p>AI와 함께 아이디어를 실제 서비스로 만듭니다. 작지만 진짜 돌아가는 것을 지향합니다.</p>
+    </div>
   </div>
 </div>
 
-<div class="section-title reveal">Skills</div>
+<div class="section-divider"></div>
 
-<div class="skill-tags reveal">
-  <span class="skill-tag">Problem Solving</span>
-  <span class="skill-tag">Data Analysis</span>
-  <span class="skill-tag">SQL</span>
-  <span class="skill-tag">Product Management</span>
-  <span class="skill-tag">Vibe Coding</span>
-  <span class="skill-tag">Service Planning</span>
-  <span class="skill-tag">Strategic Partnerships</span>
-  <span class="skill-tag">Business Development</span>
+<!-- ═══════════ 03. CAREER ═══════════ -->
+<div class="about-section reveal">
+  <div class="section-label">02</div>
+  <div class="section-heading">Career</div>
+  <div class="career-list">
+    <!-- Current -->
+    <div class="career-item">
+      <div class="career-period"><span class="career-now-dot"></span>현재</div>
+      <div class="career-body">
+        <h4>전략 PM · Business Excellence Team</h4>
+        <div class="career-company">쿠팡이츠 (Coupang Eats)</div>
+        <div class="career-desc">전사 문제 해결 전담 조직에서 문제정의 → 데이터 분석 → 솔루션 수립을 담당합니다.</div>
+      </div>
+    </div>
+    <div class="career-item">
+      <div class="career-period"><span class="career-now-dot"></span>현재</div>
+      <div class="career-body">
+        <h4>석사과정 · 정보경영프로그램 14기</h4>
+        <div class="career-company">KAIST 경영대학원</div>
+        <div class="career-desc">AI-Driven Business, IT경영 전략을 공부하고 있습니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toggle -->
+  <button class="career-toggle" onclick="togglePast(this)">
+    이전 경력 보기 <span class="arrow">▼</span>
+  </button>
+
+  <!-- Past careers (collapsed) -->
+  <div class="career-past" id="career-past">
+    <div class="career-list">
+      <div class="career-item">
+        <div class="career-period">2021 — 2025</div>
+        <div class="career-body">
+          <h4>PM · 서비스기획팀</h4>
+          <div class="career-company">NHN PAYCO</div>
+          <div class="career-desc">대학생 결제 플랫폼 'PAYCO 캠퍼스' 사업 전반을 기획하고 성장시켰습니다.</div>
+          <ul class="career-achievements">
+            <li>캠퍼스 DA 광고 상품 런칭 — 사업 손익 <span class="m">YoY 56% 개선</span></li>
+            <li>리워드 구조 개편 — 마케팅 비용 <span class="m">55% 절감</span>, MAU <span class="m">20% 증가</span></li>
+            <li>케이뱅크 제휴 — 양사 역대 최다 실적, 광고 매출 <span class="m">전년 대비 9배</span></li>
+            <li>생협 앱 채널링 — 가맹점 거래 볼륨 <span class="m">57% 상승</span></li>
+            <li>식권 예약 서비스 런칭 — <span class="m">10+개 대학</span> 운영 중</li>
+            <li>결제 단말기 개선 — 스캔 CS <span class="m">95% 감소</span></li>
+          </ul>
+          <span class="career-badge">2023 3Q PAYCO 플레이어</span>
+        </div>
+      </div>
+      <div class="career-item">
+        <div class="career-period">2019 — 2021</div>
+        <div class="career-body">
+          <h4>SCM · 공급망관리팀</h4>
+          <div class="career-company">SK케미칼 (SK plasma)</div>
+          <div class="career-desc">혈액제제 원료의 공급망 관리와 물류 최적화를 담당했습니다.</div>
+          <ul class="career-achievements">
+            <li>내륙운송 차량 추가 확보 — 운송비 <span class="m">연 20% 절감</span></li>
+            <li>원료혈장 파손율 개선 — 연간 약 <span class="m">2억원 원가절감</span></li>
+          </ul>
+          <span class="career-badge">2020 대표이사 즉상</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="section-title reveal">Interests</div>
+<div class="section-divider"></div>
 
-<div class="interest-grid reveal">
-  <div class="interest-card">
-    <span class="emoji">🏀</span>
-    <span>농구</span>
+<!-- ═══════════ 04. EDUCATION ═══════════ -->
+<div class="about-section reveal">
+  <div class="section-label">03</div>
+  <div class="section-heading">Education</div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-period">2025 — Present</div>
+      <h4>KAIST 경영대학원</h4>
+      <p>정보경영프로그램(IMMS) 석사과정</p>
+    </div>
+    <div class="edu-card">
+      <div class="edu-period">— 2019</div>
+      <h4>경희대학교</h4>
+      <p>국제학과 (Global Business)</p>
+    </div>
   </div>
-  <div class="interest-card">
-    <span class="emoji">⚾</span>
-    <span>삼성라이온즈</span>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ 05. SKILLS ═══════════ -->
+<div class="about-section reveal">
+  <div class="section-label">04</div>
+  <div class="section-heading">Skills</div>
+  <div class="skill-group">
+    <div class="skill-group-label">Core</div>
+    <div class="skill-tags">
+      <span class="skill-tag">Problem Solving</span>
+      <span class="skill-tag">Data Analysis</span>
+      <span class="skill-tag">SQL</span>
+      <span class="skill-tag">Product Management</span>
+    </div>
   </div>
-  <div class="interest-card">
-    <span class="emoji">🍽️</span>
-    <span>미식</span>
+  <div class="skill-group">
+    <div class="skill-group-label">Build</div>
+    <div class="skill-tags">
+      <span class="skill-tag">Vibe Coding</span>
+      <span class="skill-tag">Service Planning</span>
+      <span class="skill-tag">Prototyping</span>
+    </div>
+  </div>
+  <div class="skill-group">
+    <div class="skill-group-label">Business</div>
+    <div class="skill-tags">
+      <span class="skill-tag secondary">Strategic Partnerships</span>
+      <span class="skill-tag secondary">Business Development</span>
+      <span class="skill-tag secondary">P&L Management</span>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ 06. INTERESTS ═══════════ -->
+<div class="about-section reveal">
+  <div class="section-label">05</div>
+  <div class="section-heading">Interests</div>
+  <div class="interest-row">
+    <div class="interest-pill">
+      <span class="emoji">🏀</span>
+      <span>농구</span>
+    </div>
+    <div class="interest-pill">
+      <span class="emoji">⚾</span>
+      <span>삼성라이온즈</span>
+    </div>
+    <div class="interest-pill">
+      <span class="emoji">🍽️</span>
+      <span>미식</span>
+    </div>
   </div>
 </div>
 
 <script>
+// Scroll reveal
 document.addEventListener('DOMContentLoaded', () => {
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('in'), i * 80);
+        entry.target.classList.add('in');
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
-
+  }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 });
+
+// Career toggle
+function togglePast(btn) {
+  const past = document.getElementById('career-past');
+  btn.classList.toggle('open');
+  past.classList.toggle('open');
+  const label = btn.classList.contains('open') ? '접기' : '이전 경력 보기';
+  btn.innerHTML = label + ' <span class="arrow">▼</span>';
+}
 </script>
